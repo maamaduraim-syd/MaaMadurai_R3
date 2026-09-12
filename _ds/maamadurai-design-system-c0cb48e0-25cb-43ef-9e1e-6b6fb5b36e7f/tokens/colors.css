@@ -1,0 +1,46 @@
+/* ===================================================================
+   MaaMadurai Street Food — Color Tokens
+   Source of truth: production app/globals.css (app.maamadurai.com.au)
+   cross-referenced with the print Brand Guidelines PDF (primary
+   #751510 / #af1e15 / #fece05). The shipped site uses slightly
+   richer/deeper values — those win per the "attached kit is ground
+   truth" rule.
+=================================================================== */
+
+:root {
+  /* ---- Base palette (raw values) ---- */
+  --red-900: #7d1d0d;   /* background — deep sindoor red */
+  --red-800: #8f2410;   /* background-elevated */
+  --red-700: #a02a13;   /* background-card */
+  --red-600: #af1e15;   /* brand-guideline secondary red */
+  --red-500: #751510;   /* brand-guideline primary red (darkest, for print) */
+
+  --gold-500: #face0b;  /* accent-primary — turmeric gold */
+  --gold-400: #fbd84d;  /* accent-hover */
+  --gold-600: #fece05;  /* brand-guideline gold (print) */
+
+  --cream-100: #f5f0e8; /* foreground-muted */
+  --lavender-100: #e8e6fb; /* accent-secondary, used sparingly for cool contrast (badges) */
+
+  --white: #ffffff;
+  --black: #000000;
+
+  /* ---- Semantic aliases (use these in product) ---- */
+  --background: var(--red-900);
+  --background-elevated: var(--red-800);
+  --background-card: var(--red-700);
+
+  --foreground: var(--white);
+  --foreground-muted: var(--cream-100);
+
+  --accent-primary: var(--gold-500);
+  --accent-secondary: var(--lavender-100);
+  --accent-hover: var(--gold-400);
+
+  --border-subtle: rgba(250, 206, 11, 0.2);
+  --border-medium: rgba(250, 206, 11, 0.3);
+
+  /* Status colors used for menu dietary tags (not brand-defined, kept minimal) */
+  --tag-veg: #22c55e;
+  --tag-spicy: #ef4444;
+}

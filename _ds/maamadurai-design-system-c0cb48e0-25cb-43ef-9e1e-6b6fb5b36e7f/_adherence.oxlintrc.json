@@ -1,0 +1,296 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/buttons/**",
+              "components/cards/**",
+              "components/feedback/**",
+              "components/forms/**",
+              "components/icons/**",
+              "components/navigation/**",
+              "components/social/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Cinzel|Poppins|Noto Sans Tamil))/i]",
+        "message": "Font not provided by the design system. Available: Cinzel, Poppins, Noto Sans Tamil."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|tone|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: children, tone."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:gold|dark)$/]",
+        "message": "<Badge> tone must be one of 'gold' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|size|disabled|children|onClick|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, size, disabled, children, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:solid|tab|tabActive|outline)$/]",
+        "message": "<Button> variant must be one of 'solid' | 'tab' | 'tabActive' | 'outline'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='size'] > Literal[value!=/^(?:sm|md|lg)$/]",
+        "message": "<Button> size must be one of 'sm' | 'md' | 'lg'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='CategoryTabs'] > JSXAttribute > JSXIdentifier[name!=/^(?:categories|active|onChange|extra|key|ref|className|style|children)$/]",
+        "message": "<CategoryTabs> doesn't accept that prop. Declared props: categories, active, onChange, extra."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|color|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size, color."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute[name.name='name'] > Literal[value!=/^(?:map-pin|leaf|flame|chevron-left|chevron-right|heart|message-circle|mail|phone|clock|utensils-crossed|facebook|instagram|tripadvisor|ubereats|doordash)$/]",
+        "message": "<Icon> name must be one of 'map-pin' | 'leaf' | 'flame' | 'chevron-left' | 'chevron-right' | 'heart' | 'message-circle' | 'mail' | 'phone' | 'clock' | 'utensils-crossed' | 'facebook' | 'instagram' | 'tripadvisor' | 'ubereats' | 'doordash'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Input'] > JSXAttribute > JSXIdentifier[name!=/^(?:type|name|value|placeholder|error|onChange|key|ref|className|style|children)$/]",
+        "message": "<Input> doesn't accept that prop. Declared props: type, name, value, placeholder, error, onChange."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuHighlightCard'] > JSXAttribute > JSXIdentifier[name!=/^(?:image|title|key|ref|className|style|children)$/]",
+        "message": "<MenuHighlightCard> doesn't accept that prop. Declared props: image, title."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='MenuItemRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|price|isVeg|isSpicy|key|ref|className|style|children)$/]",
+        "message": "<MenuItemRow> doesn't accept that prop. Declared props: title, price, isVeg, isSpicy."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionPanel'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|key|ref|className|style|children)$/]",
+        "message": "<SectionPanel> doesn't accept that prop. Declared props: children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SocialIconButton'] > JSXAttribute > JSXIdentifier[name!=/^(?:icon|href|size|key|ref|className|style|children)$/]",
+        "message": "<SocialIconButton> doesn't accept that prop. Declared props: icon, href, size."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Textarea'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|value|placeholder|rows|error|onChange|key|ref|className|style|children)$/]",
+        "message": "<Textarea> doesn't accept that prop. Declared props: name, value, placeholder, rows, error, onChange."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Badge": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "CategoryTabs": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "Input": {
+        "replaces": []
+      },
+      "MenuHighlightCard": {
+        "replaces": []
+      },
+      "MenuItemRow": {
+        "replaces": []
+      },
+      "SectionPanel": {
+        "replaces": []
+      },
+      "SocialIconButton": {
+        "replaces": []
+      },
+      "Textarea": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent-hover",
+      "--accent-primary",
+      "--accent-secondary",
+      "--background",
+      "--background-card",
+      "--background-elevated",
+      "--black",
+      "--border-medium",
+      "--border-subtle",
+      "--border-width",
+      "--border-width-thick",
+      "--content-max-width",
+      "--cream-100",
+      "--duration-fast",
+      "--duration-hero",
+      "--duration-medium",
+      "--duration-slow",
+      "--ease-standard",
+      "--font-body",
+      "--font-display",
+      "--font-tamil",
+      "--foreground",
+      "--foreground-muted",
+      "--gold-400",
+      "--gold-500",
+      "--gold-600",
+      "--lavender-100",
+      "--leading-body",
+      "--leading-tight",
+      "--radius-full",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-sm",
+      "--radius-xl",
+      "--red-500",
+      "--red-600",
+      "--red-700",
+      "--red-800",
+      "--red-900",
+      "--section-max-width",
+      "--section-padding-x",
+      "--section-padding-y",
+      "--shadow-card",
+      "--shadow-image",
+      "--space-1",
+      "--space-10",
+      "--space-12",
+      "--space-16",
+      "--space-2",
+      "--space-24",
+      "--space-3",
+      "--space-4",
+      "--space-6",
+      "--space-8",
+      "--tag-spicy",
+      "--tag-veg",
+      "--text-body",
+      "--text-body-lg",
+      "--text-body-sm",
+      "--text-body-xl",
+      "--text-caption",
+      "--text-display-lg",
+      "--text-display-md",
+      "--text-display-xl",
+      "--text-hero",
+      "--text-micro",
+      "--tracking-wide",
+      "--tracking-widest",
+      "--white"
+    ],
+    "tokenKinds": {
+      "--red-900": "color",
+      "--red-800": "color",
+      "--red-700": "color",
+      "--red-600": "color",
+      "--red-500": "color",
+      "--gold-500": "color",
+      "--gold-400": "color",
+      "--gold-600": "color",
+      "--cream-100": "color",
+      "--lavender-100": "color",
+      "--white": "color",
+      "--black": "color",
+      "--background": "color",
+      "--background-elevated": "color",
+      "--background-card": "color",
+      "--foreground": "color",
+      "--foreground-muted": "color",
+      "--accent-primary": "color",
+      "--accent-secondary": "color",
+      "--accent-hover": "color",
+      "--border-subtle": "color",
+      "--border-medium": "color",
+      "--tag-veg": "color",
+      "--tag-spicy": "color",
+      "--font-display": "font",
+      "--font-body": "font",
+      "--font-tamil": "font",
+      "--text-display-xl": "font",
+      "--text-display-lg": "font",
+      "--text-display-md": "font",
+      "--text-hero": "font",
+      "--text-body-xl": "font",
+      "--text-body-lg": "font",
+      "--text-body": "font",
+      "--text-body-sm": "font",
+      "--text-caption": "font",
+      "--text-micro": "font",
+      "--leading-tight": "font",
+      "--leading-body": "font",
+      "--tracking-wide": "font",
+      "--tracking-widest": "font",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-6": "spacing",
+      "--space-8": "spacing",
+      "--space-10": "spacing",
+      "--space-12": "spacing",
+      "--space-16": "spacing",
+      "--space-24": "spacing",
+      "--section-padding-y": "spacing",
+      "--section-padding-x": "spacing",
+      "--section-max-width": "spacing",
+      "--content-max-width": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-xl": "radius",
+      "--radius-full": "radius",
+      "--border-width": "spacing",
+      "--border-width-thick": "spacing",
+      "--shadow-card": "shadow",
+      "--shadow-image": "shadow",
+      "--ease-standard": "other",
+      "--duration-fast": "other",
+      "--duration-medium": "other",
+      "--duration-slow": "other",
+      "--duration-hero": "other"
+    },
+    "fontFamilies": [
+      "Cinzel",
+      "Noto Sans Tamil",
+      "Poppins"
+    ]
+  }
+}

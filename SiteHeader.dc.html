@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/colors.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
+<script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
+<style>
+  [data-mm-strip-email], [data-mm-strip-hours] { display: flex; }
+  [data-mm-desktop-nav] { display: flex; }
+  [data-mm-burger] { display: none; }
+  [data-mm-actionbar] { display: none; }
+  @media (max-width: 1100px) {
+    [data-mm-strip-email] { display: none; }
+  }
+  @media (max-width: 1040px) {
+    [data-mm-desktop-nav] { display: none; }
+    [data-mm-burger] { display: inline-flex; }
+  }
+  @media (max-width: 860px) {
+    [data-mm-strip-hours] { display: none; }
+    [data-mm-actionbar] { display: grid; }
+    body { padding-bottom: 78px; }
+  }
+  [data-mm-skip]:focus { transform: translateY(0) !important; }
+  a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 3px solid #face0b;
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+</style>
+</helmet>
+<div data-track-location="header" style="font-family: var(--font-body)">
+  <a data-mm-skip href="#main" style="position: fixed; top: 8px; left: 8px; z-index: 100; padding: 12px 20px; border-radius: 8px; background: var(--accent-primary); color: var(--background); font-weight: 600; text-decoration: none; transform: translateY(-200%); transition: transform 0.15s ease">Skip to main content</a>
+
+  <div style="background: #000; color: #fff; font-size: 11px">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 8px 16px; display: flex; align-items: center; justify-content: space-between; gap: 18px">
+      <div style="display: flex; align-items: center; gap: 16px; min-width: 0">
+        <a href="tel:+61424077120" style="display: flex; align-items: center; gap: 6px; color: rgba(255,255,255,0.82); text-decoration: none; white-space: nowrap" style-hover="color: #fff">
+          <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="phone" size="12" hint-size="12px,12px"></x-import>0424 077 120
+        </a>
+        <a data-mm-strip-email href="mailto:maamaduraistreetfood@gmail.com" style="align-items: center; gap: 6px; color: rgba(255,255,255,0.82); text-decoration: none; white-space: nowrap" style-hover="color: #fff">
+          <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="mail" size="12" hint-size="12px,12px"></x-import>maamaduraistreetfood@gmail.com
+        </a>
+      </div>
+      <div data-mm-strip-hours style="align-items: center; gap: 8px; color: rgba(255,255,255,0.72); white-space: nowrap">
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="clock" size="12" hint-size="12px,12px"></x-import>
+        <span>Tue–Wed 5–9pm · Thu–Fri 11am–9pm · Sat 10am–9pm · Sun 9am–8pm · Mon closed</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px; flex-shrink: 0">
+        <a href="https://www.facebook.com/maamaduraistreetfood" target="_blank" rel="noreferrer" aria-label="MaaMadurai on Facebook" style="color: rgba(255,255,255,0.7); display: flex" style-hover="color: #fff"><x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="facebook" size="14" hint-size="14px,14px"></x-import></a>
+        <a href="https://www.instagram.com/maamadurai.streetfood" target="_blank" rel="noreferrer" aria-label="MaaMadurai on Instagram" style="color: rgba(255,255,255,0.7); display: flex" style-hover="color: #fff"><x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="instagram" size="14" hint-size="14px,14px"></x-import></a>
+        <a href="https://www.tripadvisor.com.au/Restaurant_Review-g4267033-d34169305-Reviews-MaaMadurai_Street_Food-Toongabbie_Parramatta_Greater_Sydney_New_South_Wales.html" target="_blank" rel="noreferrer" aria-label="MaaMadurai on Tripadvisor" style="color: rgba(255,255,255,0.7); display: flex" style-hover="color: #fff"><x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="tripadvisor" size="14" hint-size="14px,14px"></x-import></a>
+      </div>
+    </div>
+  </div>
+
+  <header style="position: sticky; top: 0; z-index: 40; background: var(--background-card); border-bottom: 1px solid var(--border-subtle)">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 16px">
+      <a href="/" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--foreground); flex-shrink: 0">
+        <img src="public/logo-192.png" alt="MaaMadurai logo" width="48" height="48" style="width: 48px; height: 48px; border-radius: 9999px; object-fit: cover">
+        <span style="display: flex; flex-direction: column; line-height: 1.1">
+          <span style="font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 0.02em">MaaMadurai</span>
+          <span style="font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-primary)">Toongabbie</span>
+        </span>
+      </a>
+
+      <nav data-mm-desktop-nav aria-label="Primary" style="flex-wrap: wrap; align-items: center; gap: 2px; margin-left: auto; font-size: 14px">
+        <a href="/" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Home<sc-if value="{{ isHome }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/menu" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Menu<sc-if value="{{ isMenu }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/order" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Order<sc-if value="{{ isOrder }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/catering" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Catering<sc-if value="{{ isCatering }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/reviews" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Reviews<sc-if value="{{ isReviews }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/journal" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Journal<sc-if value="{{ isBlog }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/about" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Our Story<sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+        <a href="/contact" style="position: relative; padding: 8px 10px; color: var(--foreground); text-decoration: none; border-radius: 8px" style-hover="color: var(--accent-primary)">Find Us<sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}"><span style="position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--accent-primary)"></span></sc-if></a>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0">
+        <span style="display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 9999px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--foreground-muted); white-space: nowrap">
+          <span style="width: 8px; height: 8px; border-radius: 9999px; background: {{ openDotColor }}"></span>{{ openLabel }}
+        </span>
+        <a href="/order" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 9999px; background: var(--accent-primary); color: var(--background); font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap" style-hover="background: var(--accent-hover)">Order Online</a>
+        <button data-mm-burger type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mm-mobile-nav" aria-label="{{ burgerLabel }}" style="align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--border-medium); background: rgba(0,0,0,0.25); color: var(--foreground); cursor: pointer; font-size: 20px; line-height: 1">{{ burgerGlyph }}</button>
+      </div>
+    </div>
+
+    <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+      <nav id="mm-mobile-nav" aria-label="Primary mobile" style="border-top: 1px solid var(--border-subtle); background: var(--background-elevated); padding: 10px 16px 18px; display: grid; gap: 2px">
+        <a href="/" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Home</a>
+        <a href="/menu" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Menu &amp; Prices</a>
+        <a href="/order" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Order Online</a>
+        <a href="/catering" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Biryani Catering</a>
+        <a href="/reviews" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Reviews</a>
+        <a href="/journal" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Madurai Food Journal</a>
+        <a href="/about" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px; border-bottom: 1px solid rgba(250,206,11,0.12)">Our Story</a>
+        <a href="/contact" onClick="{{ closeMenu }}" style="padding: 14px 12px; border-radius: 10px; color: var(--foreground); text-decoration: none; font-size: 16px">Find Us &amp; Contact</a>
+      </nav>
+    </sc-if>
+  </header>
+
+  <div data-mm-actionbar data-track-location="mobile_action_bar" role="group" aria-label="Quick actions" style="position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; grid-template-columns: repeat(4, 1fr); background: rgba(26,13,9,0.97); border-top: 1px solid rgba(250,206,11,0.28); backdrop-filter: blur(8px)">
+    <a href="tel:+61424077120" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 66px; padding: 8px 4px; color: var(--foreground); text-decoration: none; font-size: 12px; font-weight: 600">
+      <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="phone" size="19" hint-size="19px,19px"></x-import>Call
+    </a>
+    <a href="/menu" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 66px; padding: 8px 4px; color: var(--foreground); text-decoration: none; font-size: 12px; font-weight: 600">
+      <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="utensils" size="19" hint-size="19px,19px"></x-import>Menu
+    </a>
+    <a href="https://share.google/RYMy5DAmlF9VVfzFI" target="_blank" rel="noreferrer" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 66px; padding: 8px 4px; color: var(--foreground); text-decoration: none; font-size: 12px; font-weight: 600">
+      <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="mapPin" size="19" hint-size="19px,19px"></x-import>Directions
+    </a>
+    <a href="/order" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-height: 66px; padding: 8px 4px; background: var(--accent-primary); color: var(--background); text-decoration: none; font-size: 12px; font-weight: 700">
+      <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Icon" name="ubereats" size="19" hint-size="19px,19px"></x-import>Order
+    </a>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:200},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;home&quot;,&quot;menu&quot;,&quot;about&quot;,&quot;catering&quot;,&quot;order&quot;,&quot;reviews&quot;,&quot;blog&quot;,&quot;contact&quot;],&quot;default&quot;:&quot;home&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { now: new Date(), menuOpen: false };
+  componentDidMount() {
+    this.timer = setInterval(() => this.setState({ now: new Date() }), 60000);
+  }
+  componentWillUnmount() { clearInterval(this.timer); }
+  sydneyParts() {
+    const fmt = new Intl.DateTimeFormat('en-AU', {
+      timeZone: 'Australia/Sydney', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false
+    });
+    const p = {};
+    for (const part of fmt.formatToParts(this.state.now)) p[part.type] = part.value;
+    return { day: p.weekday, mins: parseInt(p.hour, 10) * 60 + parseInt(p.minute, 10) };
+  }
+  openState() {
+    const { day, mins } = this.sydneyParts();
+    const hours = {
+      Tue: [1020, 1260], Wed: [1020, 1260], Thu: [660, 1260], Fri: [660, 1260],
+      Sat: [600, 1260], Sun: [540, 1200]
+    };
+    const today = hours[day];
+    if (!today) return { open: false, label: 'Closed today (Mon)' };
+    if (mins < today[0]) {
+      const h = Math.floor(today[0] / 60);
+      const label = h >= 12 ? (h === 12 ? '12pm' : (h - 12) + 'pm') : h + 'am';
+      return { open: false, label: 'Opens ' + label };
+    }
+    if (mins >= today[1]) return { open: false, label: 'Closed now' };
+    return { open: true, label: 'Open now' };
+  }
+  renderVals() {
+    const s = this.openState();
+    const active = this.props.active || 'home';
+    const open = this.state.menuOpen;
+    return {
+      openLabel: s.label,
+      openDotColor: s.open ? '#22c55e' : 'rgba(245,240,232,0.45)',
+      menuOpen: open,
+      burgerGlyph: open ? '\u00d7' : '\u2630',
+      burgerLabel: open ? 'Close menu' : 'Open menu',
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      isHome: active === 'home', isMenu: active === 'menu', isAbout: active === 'about',
+      isCatering: active === 'catering', isOrder: active === 'order', isReviews: active === 'reviews',
+      isBlog: active === 'blog', isContact: active === 'contact'
+    };
+  }
+}
+</script>
+</body>
+</html>

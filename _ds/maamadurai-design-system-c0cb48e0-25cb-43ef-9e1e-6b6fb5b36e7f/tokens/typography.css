@@ -1,0 +1,42 @@
+/* ===================================================================
+   MaaMadurai Street Food — Typography Tokens
+=================================================================== */
+
+:root {
+  /* ---- Font families ---- */
+  /* Display/heading font per shipped site (Cinzel, a serif with subtle
+     small-caps/engraved feel — evokes temple-town heritage & tradition).
+     NOTE: the print Brand Guidelines PDF specifies "Elephant" as the
+     primary display font, which is not available as a webfont and was
+     not shipped in the production code. Cinzel is the real, in-use
+     substitute — see README "Fonts" caveat. */
+  --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+
+  /* Body font — matches guideline's secondary font exactly */
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Tamil-script type (headings/quotes in Tamil) — the brand guideline
+     specifies proprietary faces "TAMIL-UNI025" / "TAMIL-UNI005" which
+     are not distributable webfonts. Noto Sans Tamil is substituted so
+     Tamil copy renders correctly; see README caveat. */
+  --font-tamil: 'Noto Sans Tamil', 'Poppins', sans-serif;
+
+  /* ---- Type scale (as used across the site's section headers/body) ---- */
+  --text-display-xl: 3.75rem;   /* 60px — hero "About Us" / "Contact" H2s */
+  --text-display-lg: 3rem;      /* 48px — "Opening Hours" style H2s */
+  --text-display-md: 2.25rem;   /* 36px — sub-section H3 (menu category) */
+  --text-hero: clamp(1.5rem, 4vw, 3.75rem); /* hero H1, fluid */
+
+  --text-body-xl: 1.25rem;      /* 20px */
+  --text-body-lg: 1.125rem;     /* 18px */
+  --text-body: 1rem;            /* 16px */
+  --text-body-sm: 0.875rem;     /* 14px */
+  --text-caption: 0.75rem;      /* 12px */
+  --text-micro: 0.6875rem;      /* 11px — top info strip */
+
+  --leading-tight: 1.2;
+  --leading-body: 1.6;
+
+  --tracking-wide: 0.02em;
+  --tracking-widest: 0.15em; /* uppercase button labels e.g. "DOWNLOAD FULL PDF MENU" */
+}

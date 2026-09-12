@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/colors.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
+<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
+<script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
+</helmet>
+<footer style="font-family: var(--font-body); background: var(--background); border-top: 1px solid var(--border-subtle); padding: 56px 16px 28px">
+  <div style="max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 40px">
+    <div>
+      <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px">
+        <img src="public/logo-192.png" alt="MaaMadurai logo" width="44" height="44" style="width: 44px; height: 44px; border-radius: 9999px; object-fit: cover">
+        <span style="font-family: var(--font-display); font-size: 18px; font-weight: 700">MaaMadurai</span>
+      </div>
+      <p style="color: var(--foreground-muted); font-size: 14px; line-height: 1.7; margin: 0 0 16px">Madurai-style Tamil street food in Toongabbie, Western Sydney. Biryani, kothu parotta, dosai and Jigarthanda, cooked the way they are back home.</p>
+      <div style="display: flex; gap: 10px; flex-wrap: wrap">
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.SocialIconButton" href="https://www.facebook.com/maamaduraistreetfood" size="40" icon="{{ facebookIcon }}" aria-label="Facebook" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.SocialIconButton" href="https://www.instagram.com/maamadurai.streetfood" size="40" icon="{{ instagramIcon }}" aria-label="Instagram" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.SocialIconButton" href="https://www.tripadvisor.com.au/Restaurant_Review-g4267033-d34169305-Reviews-MaaMadurai_Street_Food-Toongabbie_Parramatta_Greater_Sydney_New_South_Wales.html" size="40" icon="{{ tripadvisorIcon }}" aria-label="Tripadvisor" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.SocialIconButton" href="https://www.ubereats.com/au/store/maamadurai-street-food/Ne2PEvvnTkubwn6eL_ru_A" size="40" icon="{{ uberIcon }}" aria-label="Uber Eats" hint-size="40px,40px"></x-import>
+        <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.SocialIconButton" href="https://www.doordash.com/en-AU/store/maamadurai-street-food-toongabbie-35301587/78012746/" size="40" icon="{{ doordashIcon }}" aria-label="DoorDash" hint-size="40px,40px"></x-import>
+      </div>
+    </div>
+
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-primary); margin: 0 0 16px">Find Us</h3>
+      <address style="font-style: normal; color: var(--foreground-muted); font-size: 14px; line-height: 1.8; display: flex; flex-direction: column; gap: 8px">
+        <span>Shop P34, Portico Plaza<br>17–19 Aurelia Street<br>Toongabbie NSW 2146</span>
+        <a href="tel:+61424077120" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">0424 077 120</a>
+        <a href="mailto:maamaduraistreetfood@gmail.com" style="color: var(--foreground-muted); text-decoration: none; word-break: break-all" style-hover="color: var(--accent-primary)">maamaduraistreetfood@gmail.com</a>
+        <a href="https://share.google/RYMy5DAmlF9VVfzFI" target="_blank" rel="noreferrer" style="color: var(--accent-primary); text-decoration: none; font-weight: 500" style-hover="color: var(--accent-hover)">Get directions →</a>
+      </address>
+    </div>
+
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-primary); margin: 0 0 16px">Opening Hours</h3>
+      <dl style="margin: 0; color: var(--foreground-muted); font-size: 14px; display: grid; grid-template-columns: auto 1fr; gap: 6px 16px">
+        <dt>Monday</dt><dd style="margin: 0; text-align: right">Closed</dd>
+        <dt>Tue – Wed</dt><dd style="margin: 0; text-align: right">5pm – 9pm</dd>
+        <dt>Thu – Fri</dt><dd style="margin: 0; text-align: right">11am – 9pm</dd>
+        <dt>Saturday</dt><dd style="margin: 0; text-align: right">10am – 9pm</dd>
+        <dt>Sunday</dt><dd style="margin: 0; text-align: right">9am – 8pm</dd>
+      </dl>
+      <p style="color: var(--foreground-muted); font-size: 13px; line-height: 1.7; margin: 16px 0 0">Weekend specials: Nenju Ezhumbu Soup and Goat Brain Fry.</p>
+    </div>
+
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-primary); margin: 0 0 16px">Explore</h3>
+      <nav aria-label="Footer" style="display: grid; gap: 8px; font-size: 14px">
+        <a href="/menu" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Full Menu &amp; Prices</a>
+        <a href="/catering" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Biryani Catering</a>
+        <a href="/order" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Order Online</a>
+        <a href="/about" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Our Story</a>
+        <a href="/reviews" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Reviews</a>
+        <a href="/journal" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Madurai Food Journal</a>
+        <a href="/contact" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Contact &amp; Find Us</a>
+      </nav>
+    </div>
+  </div>
+
+  <div style="max-width: 1280px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--border-subtle)">
+    <p style="color: rgba(245,240,232,0.7); font-size: 13px; line-height: 1.8; margin: 0 0 14px; text-wrap: pretty">Serving South Indian and Tamil food to Toongabbie, Pendle Hill, Wentworthville, Girraween, Seven Hills, Winston Hills, Westmead, Parramatta, Blacktown and the wider Western Sydney area.</p>
+    <p style="color: rgba(245,240,232,0.7); font-size: 13px; line-height: 1.8; margin: 0 0 14px; text-wrap: pretty">The chicken and mutton we cook with is halal. Everything is prepared in one kitchen alongside dairy, nuts, egg and gluten, so we cannot guarantee any dish is free of a given allergen — please tell us about an allergy when you order.</p>
+    <nav aria-label="Legal" style="display: flex; flex-wrap: wrap; gap: 8px 22px; margin: 0 0 14px; font-size: 13px">
+      <a href="/privacy" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Privacy &amp; tracking</a>
+      <a href="/privacy#accessibility" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Accessibility</a>
+      <a href="/contact" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Contact us</a>
+    </nav>
+    <p style="color: rgba(245,240,232,0.55); font-size: 13px; margin: 0">© 2026 MaaMadurai, Shop P34 Portico Plaza, Toongabbie NSW 2146. All rights reserved.</p>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:420}}">
+class Component extends DCLogic {
+  icon(name) {
+    const Icon = window.MaaMaduraiDesignSystem_c0cb48 && window.MaaMaduraiDesignSystem_c0cb48.Icon;
+    return Icon ? React.createElement(Icon, { name, size: 18 }) : null;
+  }
+  renderVals() {
+    return {
+      facebookIcon: this.icon('facebook'),
+      instagramIcon: this.icon('instagram'),
+      tripadvisorIcon: this.icon('tripadvisor'),
+      uberIcon: this.icon('ubereats'),
+      doordashIcon: this.icon('doordash')
+    };
+  }
+}
+</script>
+</body>
+</html>
