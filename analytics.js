@@ -50,7 +50,7 @@
     var CLEAN = {
       '/': 'index.html', '/menu': 'Menu.dc.html', '/order': 'Order.dc.html', '/catering': 'Catering.dc.html',
       '/about': 'About.dc.html', '/reviews': 'Reviews.dc.html', '/journal': 'Blog.dc.html',
-      '/contact': 'Contact.dc.html', '/privacy': 'Privacy.dc.html',
+      '/contact': 'Contact.dc.html', '/privacy': 'Privacy.dc.html', '/thank-you': 'ThankYou.dc.html',
       '/journal/what-is-kothu-parotta': 'ArticleKothuParotta.dc.html',
       '/journal/seeraga-samba-biryani': 'ArticleSeeragaSamba.dc.html',
       '/journal/what-is-jigarthanda': 'ArticleJigarthanda.dc.html',

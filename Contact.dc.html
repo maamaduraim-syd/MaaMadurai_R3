@@ -193,6 +193,8 @@ class Component extends DCLogic {
       form.reset();
       this.setState({ status: 'ok' });
       if (window.mmTrack) window.mmTrack(kind === 'catering' ? 'catering_form_success' : 'contact_form_success', { page: location.pathname, enquiry_type: kind });
+      const live = /(^|\.)maamadurai\.com\.au$/.test(location.hostname);
+      location.assign((live ? '/thank-you' : 'ThankYou.dc.html') + '?type=' + kind);
     } catch (err) {
       this.setState({ status: 'error', errorText: 'we could not reach the form service.' });
     }

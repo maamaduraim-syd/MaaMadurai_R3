@@ -46,6 +46,11 @@
       "source": "/blog",
       "destination": "/journal",
       "permanent": true
+    },
+    {
+      "source": "/ThankYou.dc.html",
+      "destination": "/thank-you",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -106,6 +111,10 @@
       "destination": "/Privacy.dc.html"
     },
     {
+      "source": "/thank-you",
+      "destination": "/ThankYou.dc.html"
+    },
+    {
       "source": "/journal/what-is-kothu-parotta",
       "destination": "/ArticleKothuParotta.dc.html"
     },
@@ -132,7 +141,7 @@
   ],
   "headers": [
     {
-      "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|woff2)",
+      "source": "/public/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -141,7 +150,25 @@
       ]
     },
     {
-      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|Article[A-Za-z]+)\\.dc\\.html",
+      "source": "/_ds/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/journal/public/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
+        }
+      ]
+    },
+    {
+      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|ThankYou|Article[A-Za-z]+)\\.dc\\.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
