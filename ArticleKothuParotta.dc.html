@@ -20,11 +20,173 @@
 <meta property="og:url" content="https://www.maamadurai.com.au/journal/what-is-kothu-parotta">
 <meta property="og:image" content="https://www.maamadurai.com.au/public/kothu-parotta.jpeg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/fonts.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/colors.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
+<style data-mm-tokens>
+/* tokens/fonts.css */
+/* ===================================================================
+   MaaMadurai Street Food — Web Fonts
+   Cinzel & Poppins are loaded from Google Fonts (matches production,
+   which also loads them via @import). Noto Sans Tamil is added here
+   as a substitute for the guideline's proprietary Tamil faces so
+   Tamil-script copy (used in "Our Story") renders correctly.
+=================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');
+/* tokens/colors.css */
+/* ===================================================================
+   MaaMadurai Street Food — Color Tokens
+   Source of truth: production app/globals.css (app.maamadurai.com.au)
+   cross-referenced with the print Brand Guidelines PDF (primary
+   #751510 / #af1e15 / #fece05). The shipped site uses slightly
+   richer/deeper values — those win per the "attached kit is ground
+   truth" rule.
+=================================================================== */
+:root {
+  /* ---- Base palette (raw values) ---- */
+  --red-900: #7d1d0d;   /* background — deep sindoor red */
+  --red-800: #8f2410;   /* background-elevated */
+  --red-700: #a02a13;   /* background-card */
+  --red-600: #af1e15;   /* brand-guideline secondary red */
+  --red-500: #751510;   /* brand-guideline primary red (darkest, for print) */
+  --gold-500: #face0b;  /* accent-primary — turmeric gold */
+  --gold-400: #fbd84d;  /* accent-hover */
+  --gold-600: #fece05;  /* brand-guideline gold (print) */
+  --cream-100: #f5f0e8; /* foreground-muted */
+  --lavender-100: #e8e6fb; /* accent-secondary, used sparingly for cool contrast (badges) */
+  --white: #ffffff;
+  --black: #000000;
+  /* ---- Semantic aliases (use these in product) ---- */
+  --background: var(--red-900);
+  --background-elevated: var(--red-800);
+  --background-card: var(--red-700);
+  --foreground: var(--white);
+  --foreground-muted: var(--cream-100);
+  --accent-primary: var(--gold-500);
+  --accent-secondary: var(--lavender-100);
+  --accent-hover: var(--gold-400);
+  --border-subtle: rgba(250, 206, 11, 0.2);
+  --border-medium: rgba(250, 206, 11, 0.3);
+  /* Status colors used for menu dietary tags (not brand-defined, kept minimal) */
+  --tag-veg: #22c55e;
+  --tag-spicy: #ef4444;
+}
+/* tokens/typography.css */
+/* ===================================================================
+   MaaMadurai Street Food — Typography Tokens
+=================================================================== */
+:root {
+  /* ---- Font families ---- */
+  /* Display/heading font per shipped site (Cinzel, a serif with subtle
+     small-caps/engraved feel — evokes temple-town heritage & tradition).
+     NOTE: the print Brand Guidelines PDF specifies "Elephant" as the
+     primary display font, which is not available as a webfont and was
+     not shipped in the production code. Cinzel is the real, in-use
+     substitute — see README "Fonts" caveat. */
+  --font-display: 'Cinzel', Georgia, 'Times New Roman', serif;
+  /* Body font — matches guideline's secondary font exactly */
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Tamil-script type (headings/quotes in Tamil) — the brand guideline
+     specifies proprietary faces "TAMIL-UNI025" / "TAMIL-UNI005" which
+     are not distributable webfonts. Noto Sans Tamil is substituted so
+     Tamil copy renders correctly; see README caveat. */
+  --font-tamil: 'Noto Sans Tamil', 'Poppins', sans-serif;
+  /* ---- Type scale (as used across the site's section headers/body) ---- */
+  --text-display-xl: 3.75rem;   /* 60px — hero "About Us" / "Contact" H2s */
+  --text-display-lg: 3rem;      /* 48px — "Opening Hours" style H2s */
+  --text-display-md: 2.25rem;   /* 36px — sub-section H3 (menu category) */
+  --text-hero: clamp(1.5rem, 4vw, 3.75rem); /* hero H1, fluid */
+  --text-body-xl: 1.25rem;      /* 20px */
+  --text-body-lg: 1.125rem;     /* 18px */
+  --text-body: 1rem;            /* 16px */
+  --text-body-sm: 0.875rem;     /* 14px */
+  --text-caption: 0.75rem;      /* 12px */
+  --text-micro: 0.6875rem;      /* 11px — top info strip */
+  --leading-tight: 1.2;
+  --leading-body: 1.6;
+  --tracking-wide: 0.02em;
+  --tracking-widest: 0.15em; /* uppercase button labels e.g. "DOWNLOAD FULL PDF MENU" */
+}
+/* tokens/spacing.css */
+/* ===================================================================
+   MaaMadurai Street Food — Spacing, Radius & Elevation Tokens
+=================================================================== */
+:root {
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  /* Section rhythm: every content section on the site is a rounded
+     "panel" (background-elevated) with generous vertical padding and
+     a shared max-width, floating on the deep red page background. */
+  --section-padding-y: var(--space-16);   /* py-16 */
+  --section-padding-x: var(--space-8);    /* px-8 */
+  --section-max-width: 80rem;             /* max-w-7xl, 1280px */
+  --content-max-width: 64rem;             /* max-w-4xl for prose */
+  /* ---- Corner radii ---- */
+  --radius-sm: 0.5rem;   /* 8px — tags, small chips */
+  --radius-md: 0.75rem;  /* 12px — menu tab buttons */
+  --radius-lg: 1rem;     /* 16px — cards, form inputs, iframe wrapper */
+  --radius-xl: 1.25rem;  /* 20px — hero pill buttons (unused, legacy) */
+  --radius-full: 999px;  /* pills, avatar, social icon circles, badges */
+  /* ---- Borders ---- */
+  --border-width: 1px;
+  --border-width-thick: 2px; /* form input focus border, hover card border */
+  /* ---- Shadows ---- */
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.25);   /* review-widget wrapper */
+  --shadow-image: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Image "About Us" shadow-2xl */
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 0.3s; /* @kind other */
+  --duration-medium: 0.5s; /* @kind other */
+  --duration-slow: 0.8s; /* @kind other */
+  --duration-hero: 1.5s; /* @kind other */
+}
+/* tokens/base.css */
+/* ===================================================================
+   MaaMadurai Street Food — Base element styles
+   Mirrors production app/globals.css body + heading rules.
+=================================================================== */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  color: var(--foreground);
+}
+a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--accent-hover);
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background-elevated);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-hover);
+}
+</style>
 <script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
 <style>
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-body); }

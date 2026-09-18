@@ -6,9 +6,10 @@ date: 2026-09-18T00:00:00Z
 
 ### Updated in this project
 - Production-hardening pass: no unresolved {{ }} template tokens in crawlable HTML, one viewport meta per page, lang="en-AU" in raw source, duplicate token CSS removed.
-- Self-serving aggregateRating removed from Reviews schema; Restaurant defined once on the homepage and referenced by @id everywhere else.
+- Self-serving aggregateRating removed from BOTH the Reviews page and the homepage Restaurant entity (the homepage copy was the one Rich Results kept reporting as "Review snippets"); Restaurant defined once on the homepage and referenced by @id everywhere else.
 - Thank-you page (/thank-you) added for Google Ads conversion tracking; forms redirect there on genuine success only.
 - <noscript> nav + address/phone fallback on all 15 pages so header/footer fetch failures never hide navigation or NAP.
+- Design-system token CSS (7.2 KB across 5 files) inlined into every page: 5 fewer requests per page, and token vars can no longer be lost to a crawler resource-budget drop (Rich Results was intermittently failing typography.css/spacing.css).
 - ROOT CAUSE of the Rich Results 499s found and fixed: robots.txt "Disallow: /*.dc.html$" was blocking Googlebot from fetching SiteHeader/SiteFooter, so Google rendered every page with no header or footer. The components are now crawlable and kept out of the index with X-Robots-Tag: noindex instead.
 
 ### Previously
