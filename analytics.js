@@ -12,7 +12,6 @@
   var optedOut = false;
   try { optedOut = localStorage.getItem('mm_tracking_optout') === '1'; } catch (e) {}
   var live = LIVE_HOST.test(location.hostname) && !optedOut;
-  try { document.documentElement.lang = 'en-AU'; } catch (e) {}
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }

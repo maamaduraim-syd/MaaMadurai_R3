@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
 <script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
 <style>
   [data-mm-strip-email], [data-mm-strip-hours] { display: flex; }
@@ -103,10 +102,24 @@
 
       <div style="display: flex; align-items: center; gap: 10px; margin-left: auto; flex-shrink: 0">
         <span data-mm-openpill style="display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 9999px; background: rgba(0,0,0,0.25); border: 1px solid var(--border-subtle); font-size: 12px; color: var(--foreground-muted); white-space: nowrap">
-          <span style="width: 8px; height: 8px; border-radius: 9999px; background: {{ openDotColor }}"></span>{{ openLabel }}
+          <sc-if value="{{ hoursUnknown }}" hint-placeholder-val="{{ true }}">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(245,240,232,0.45)"></span>Open Tue–Sun
+          </sc-if>
+          <sc-if value="{{ isOpenNow }}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: #22c55e"></span>Open now
+          </sc-if>
+          <sc-if value="{{ isPreOpen }}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(245,240,232,0.45)"></span>Opens later today
+          </sc-if>
+          <sc-if value="{{ isClosedNow }}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(245,240,232,0.45)"></span>Closed now
+          </sc-if>
+          <sc-if value="{{ isClosedToday }}" hint-placeholder-val="{{ false }}">
+            <span style="width: 8px; height: 8px; border-radius: 9999px; background: rgba(245,240,232,0.45)"></span>Closed today
+          </sc-if>
         </span>
         <a data-mm-order-cta href="/order" style="display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 9999px; background: var(--accent-primary); color: var(--background); font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap" style-hover="background: var(--accent-hover)">Order Online</a>
-        <button data-mm-burger type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mm-mobile-nav" aria-label="{{ burgerLabel }}" style="align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--border-medium); background: rgba(0,0,0,0.25); color: var(--foreground); cursor: pointer; font-size: 20px; line-height: 1">{{ burgerGlyph }}</button>
+        <button data-mm-burger type="button" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}" aria-controls="mm-mobile-nav" aria-label="{{ burgerLabel }}" style="align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 12px; border: 1px solid var(--border-medium); background: rgba(0,0,0,0.25); color: var(--foreground); cursor: pointer; font-size: 20px; line-height: 1"><sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}"><span aria-hidden="true">&#215;</span></sc-if><sc-if value="{{ menuClosed }}" hint-placeholder-val="{{ true }}"><span aria-hidden="true">&#9776;</span></sc-if></button>
       </div>
     </div>
 
@@ -162,24 +175,23 @@ class Component extends DCLogic {
       Sat: [600, 1260], Sun: [540, 1200]
     };
     const today = hours[day];
-    if (!today) return { open: false, label: 'Closed today (Mon)' };
-    if (mins < today[0]) {
-      const h = Math.floor(today[0] / 60);
-      const label = h >= 12 ? (h === 12 ? '12pm' : (h - 12) + 'pm') : h + 'am';
-      return { open: false, label: 'Opens ' + label };
-    }
-    if (mins >= today[1]) return { open: false, label: 'Closed now' };
-    return { open: true, label: 'Open now' };
+    if (!today) return 'closedToday';
+    if (mins < today[0]) return 'preOpen';
+    if (mins >= today[1]) return 'closedNow';
+    return 'openNow';
   }
   renderVals() {
     const s = this.openState();
     const active = this.props.active || 'home';
     const open = this.state.menuOpen;
     return {
-      openLabel: s.label,
-      openDotColor: s.open ? '#22c55e' : 'rgba(245,240,232,0.45)',
+      hoursUnknown: false,
+      isOpenNow: s === 'openNow',
+      isPreOpen: s === 'preOpen',
+      isClosedNow: s === 'closedNow',
+      isClosedToday: s === 'closedToday',
       menuOpen: open,
-      burgerGlyph: open ? '\u00d7' : '\u2630',
+      menuClosed: !open,
       burgerLabel: open ? 'Close menu' : 'Open menu',
       toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
       closeMenu: () => this.setState({ menuOpen: false }),

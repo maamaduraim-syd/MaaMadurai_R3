@@ -2,9 +2,15 @@ repo: maamaduraim-syd/maamadurai
 branch: main
 
 ## Last sync
-date: 2026-09-12T00:00:00Z
+date: 2026-09-18T00:00:00Z
 
 ### Updated in this project
+- Production-hardening pass: no unresolved {{ }} template tokens in crawlable HTML, one viewport meta per page, lang="en-AU" in raw source, duplicate token CSS removed.
+- Self-serving aggregateRating removed from Reviews schema; Restaurant defined once on the homepage and referenced by @id everywhere else.
+- Thank-you page (/thank-you) added for Google Ads conversion tracking; forms redirect there on genuine success only.
+- <noscript> nav + address/phone fallback on all 15 pages so header/footer fetch failures never hide navigation or NAP.
+
+### Previously
 - Second-pass production audit: menu, FAQs, catering packages and homepage dish cards are now static HTML instead of client-rendered arrays.
 - Clean canonical URLs (/menu, /order, /catering, /about, /reviews, /journal, /contact, /privacy) with 301s from the old .dc.html paths.
 - Contact and new catering forms post to Formspree with real sending, error and success states; ad conversions no longer fire on page view.
@@ -26,3 +32,4 @@ date: 2026-09-12T00:00:00Z
 | Blog.dc.html + journal/*.dc.html | new content, no repo source |
 | Privacy.dc.html / 404.html | new, no repo source |
 | SiteHeader.dc.html / SiteFooter.dc.html | app/page.tsx (top info strip, footer), app/globals.css |
+| ThankYou.dc.html | new, no repo source |

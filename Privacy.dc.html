@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,6 @@
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
 <script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
 <style>
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-body); }
@@ -41,6 +40,7 @@
 
 <div style="background: var(--background); min-height: 100vh">
   <dc-import name="SiteHeader" hint-size="100%,120px"></dc-import>
+  <noscript><div style="max-width:1280px;margin:0 auto;padding:16px 16px 0"><nav aria-label="Site" style="display:flex;flex-wrap:wrap;gap:14px;font-size:15px"><a href="/">Home</a><a href="/menu">Menu</a><a href="/order">Order</a><a href="/catering">Catering</a><a href="/about">Our Story</a><a href="/reviews">Reviews</a><a href="/journal">Journal</a><a href="/contact">Contact</a></nav><p style="color:var(--foreground-muted);font-size:14px;line-height:1.7;margin:12px 0 0">MaaMadurai — Shop P34, Portico Plaza, 17–19 Aurelia Street, Toongabbie NSW 2146. Phone <a href="tel:+61424077120">0424 077 120</a>. Open Tue–Wed 5pm–9pm, Thu–Fri 11am–9pm, Sat 10am–9pm, Sun 9am–8pm.</p></div></noscript>
 
   <main id="main" tabindex="-1" style="display: flex; flex-direction: column; gap: 28px; padding: 32px 16px 56px">
     <nav aria-label="Breadcrumb" style="max-width: 860px; margin: 0 auto; width: 100%; font-size: 13px; color: var(--foreground-muted)">
@@ -74,7 +74,14 @@
         <button type="button" onClick="{{ optOut }}" style="padding: 14px 28px; border-radius: 10px; border: 1px solid var(--accent-primary); background: transparent; color: var(--accent-primary); font-family: var(--font-body); font-weight: 600; font-size: 15px; cursor: pointer; min-height: 50px" style-hover="background: var(--accent-primary); color: var(--background)">Turn measurement off</button>
         <button type="button" onClick="{{ optIn }}" style="padding: 14px 28px; border-radius: 10px; border: 1px solid var(--border-medium); background: transparent; color: var(--foreground); font-family: var(--font-body); font-weight: 600; font-size: 15px; cursor: pointer; min-height: 50px" style-hover="background: var(--background-card)">Turn measurement back on</button>
       </div>
-      <p aria-live="polite" style="color: var(--accent-primary); line-height: 1.8; margin: 0 0 26px; min-height: 28px">{{ prefMessage }}</p>
+      <div aria-live="polite" style="min-height: 28px; margin: 0 0 26px">
+        <sc-if value="{{ prefOff }}" hint-placeholder-val="{{ false }}">
+          <p style="color: var(--accent-primary); line-height: 1.8; margin: 0">Measurement is off for this browser. It takes effect on your next page view.</p>
+        </sc-if>
+        <sc-if value="{{ prefOn }}" hint-placeholder-val="{{ false }}">
+          <p style="color: var(--accent-primary); line-height: 1.8; margin: 0">Measurement is on for this browser.</p>
+        </sc-if>
+      </div>
 
       <h2 style="font-family: var(--font-display); font-size: 24px; color: var(--accent-primary); margin: 0 0 12px">Access, correction and questions</h2>
       <p style="color: var(--foreground-muted); line-height: 1.8; margin: 0 0 26px; text-wrap: pretty">To ask what we hold from an enquiry you sent, to correct it, or to have it deleted, email <a href="mailto:maamaduraistreetfood@gmail.com">maamaduraistreetfood@gmail.com</a> or call <a href="tel:+61424077120">0424 077 120</a> and we will action it. This page describes our actual practice in plain English; it is not legal advice, and we have not had it reviewed against the Australian Privacy Act.</p>
@@ -106,9 +113,8 @@ class Component extends DCLogic {
     return {
       optOut: () => this.set(true),
       optIn: () => this.set(false),
-      prefMessage: p === 'off'
-        ? 'Measurement is off for this browser. It takes effect on your next page view.'
-        : (p === 'on' ? 'Measurement is on for this browser.' : '')
+      prefOff: p === 'off',
+      prefOn: p === 'on'
     };
   }
 }

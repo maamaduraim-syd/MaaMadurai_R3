@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,6 @@
 <link rel="icon" type="image/png" href="public/logo-192.png">
 <link rel="apple-touch-icon" href="public/logo-192.png">
 <meta name="robots" content="noindex, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.maamadurai.com.au/thank-you">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nandri — Enquiry Received | MaaMadurai">
@@ -23,7 +22,6 @@
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
 <script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
 <style>
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-body); }
@@ -36,14 +34,18 @@
 
 <div style="background: var(--background); min-height: 100vh">
   <dc-import name="SiteHeader" hint-size="100%,120px"></dc-import>
+  <noscript><div style="max-width:1280px;margin:0 auto;padding:16px 16px 0"><nav aria-label="Site" style="display:flex;flex-wrap:wrap;gap:14px;font-size:15px"><a href="/">Home</a><a href="/menu">Menu</a><a href="/order">Order</a><a href="/catering">Catering</a><a href="/about">Our Story</a><a href="/reviews">Reviews</a><a href="/journal">Journal</a><a href="/contact">Contact</a></nav><p style="color:var(--foreground-muted);font-size:14px;line-height:1.7;margin:12px 0 0">MaaMadurai — Shop P34, Portico Plaza, 17–19 Aurelia Street, Toongabbie NSW 2146. Phone <a href="tel:+61424077120">0424 077 120</a>. Open Tue–Wed 5pm–9pm, Thu–Fri 11am–9pm, Sat 10am–9pm, Sun 9am–8pm.</p></div></noscript>
 
   <main id="main" tabindex="-1" style="display: flex; flex-direction: column; gap: 32px; padding: clamp(24px, 6vw, 48px) 16px clamp(40px, 8vw, 64px)">
 
     <section style="max-width: 820px; margin: 0 auto; width: 100%; box-sizing: border-box; background: var(--background-elevated); border: 1px solid var(--border-subtle); border-radius: 16px; padding: clamp(32px, 7vw, 64px) clamp(20px, 5vw, 48px); text-align: center">
       <span aria-hidden="true" style="display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 9999px; background: var(--accent-primary); color: var(--background); font-size: 34px; font-weight: 700; margin: 0 0 24px">&#10003;</span>
-      <h1 style="font-family: var(--font-display); font-size: clamp(28px, 5.4vw, 46px); margin: 0 0 14px; font-variant: small-caps; text-wrap: pretty">Nandri — We Have Your {{ headingKind }}</h1>
+      <h1 style="font-family: var(--font-display); font-size: clamp(28px, 5.4vw, 46px); margin: 0 0 14px; font-variant: small-caps; text-wrap: pretty">Nandri — We Have Your Enquiry</h1>
       <div style="width: 96px; height: 4px; background: var(--accent-primary); margin: 0 auto 24px"></div>
-      <p style="color: var(--foreground-muted); font-size: 18px; line-height: 1.75; margin: 0 auto; max-width: 620px; text-wrap: pretty">{{ leadCopy }}</p>
+      <p style="color: var(--foreground-muted); font-size: 18px; line-height: 1.75; margin: 0 auto; max-width: 620px; text-wrap: pretty">Your message is with us. We will reply to the email address you gave us as soon as the kitchen quiets down.</p>
+      <sc-if value="{{ isCatering }}" hint-placeholder-val="{{ false }}">
+        <p style="color: var(--foreground-muted); font-size: 18px; line-height: 1.75; margin: 14px auto 0; max-width: 620px; text-wrap: pretty">Your function details are with us too — we will come back with bucket sizes, starters and pricing for your date. If the date is tight, give us a ring so we can lock the kitchen in.</p>
+      </sc-if>
       <div style="display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 32px">
         <a href="tel:+61424077120" style="padding: 15px 30px; border-radius: 9999px; background: var(--accent-primary); color: var(--background); font-weight: 600; text-decoration: none; min-height: 52px; display: inline-flex; align-items: center" style-hover="background: var(--accent-hover)">Call 0424 077 120</a>
         <a href="/menu" style="padding: 15px 30px; border-radius: 9999px; border: 1px solid var(--accent-primary); color: var(--accent-primary); font-weight: 600; text-decoration: none; min-height: 52px; display: inline-flex; align-items: center" style-hover="background: var(--accent-primary); color: var(--background)">Browse the Menu</a>
@@ -99,14 +101,28 @@ class Component extends DCLogic {
      action here (the part after the slash in AW-18147375939/xxxxxxxx). */
   static ADS_LABEL = '';
   componentDidMount() {
-    const kind = this.kind();
-    const fire = () => {
-      if (!window.mmTrack) return setTimeout(fire, 300);
-      const params = { page: location.pathname, enquiry_type: kind, value: kind === 'catering' ? 150 : 25, currency: 'AUD' };
-      if (Component.ADS_LABEL) params.ads_label = Component.ADS_LABEL;
-      window.mmTrack('generate_lead', params);
-    };
-    fire();
+    // A conversion is only real if this page was reached by a genuine submit.
+    // The form sets a one-shot token; we read and clear it, so refreshes,
+    // back-navigation, bookmarks and shared links never re-count the lead.
+    let pending = null;
+    try {
+      pending = sessionStorage.getItem('mm_lead_pending');
+      if (pending) sessionStorage.removeItem('mm_lead_pending');
+    } catch (e) {}
+    if (pending) {
+      const kind = pending === 'catering' ? 'catering' : 'contact';
+      let tries = 0;
+      const fire = () => {
+        if (!window.mmTrack) {
+          if (++tries > 20) return; // opted out or analytics blocked — give up
+          return setTimeout(fire, 300);
+        }
+        const params = { page: location.pathname, enquiry_type: kind, value: kind === 'catering' ? 150 : 25, currency: 'AUD' };
+        if (Component.ADS_LABEL) params.ads_label = Component.ADS_LABEL;
+        window.mmTrack('generate_lead', params);
+      };
+      fire();
+    }
     const h = document.getElementById('main');
     if (h) h.focus({ preventScroll: true });
   }
@@ -117,10 +133,7 @@ class Component extends DCLogic {
   renderVals() {
     const catering = this.kind() === 'catering';
     return {
-      headingKind: catering ? 'Catering Enquiry' : 'Enquiry',
-      leadCopy: catering
-        ? 'Your function details are with us. We will come back with bucket sizes, starters and pricing for your date — and if the date is tight, give us a ring so we can lock the kitchen in.'
-        : 'Your message is with us. We will reply to the email address you gave us as soon as the kitchen quiets down.'
+      isCatering: catering
     };
   }
 }

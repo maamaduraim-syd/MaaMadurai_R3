@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-AU">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,13 +8,12 @@
 <body>
 <x-dc>
 <helmet>
-<title>Contact &amp; Find Us | MaaMadurai, Portico Plaza Toongabbie NSW 2146</title>
+<title>Contact MaaMadurai | Toongabbie NSW</title>
 <meta name="description" content="Find MaaMadurai at Shop P34, Portico Plaza, 17-19 Aurelia Street, Toongabbie NSW 2146. Phone 0424 077 120, open Tue–Sun. Parking, transport and enquiry form.">
 <link rel="icon" type="image/png" href="public/logo-192.png">
 <link rel="apple-touch-icon" href="public/logo-192.png">
 <link rel="shortcut icon" type="image/png" href="public/logo-192.png">
 <meta name="robots" content="index, follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://www.maamadurai.com.au/contact">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Contact &amp; Find Us — MaaMadurai, Toongabbie">
@@ -25,7 +24,6 @@
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/typography.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/spacing.css">
 <link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/tokens/base.css">
-<link rel="stylesheet" href="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/styles.css">
 <script src="_ds/maamadurai-design-system-c0cb48e0-25cb-43ef-9e1e-6b6fb5b36e7f/_ds_bundle.js"></script>
 <style>
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-body); }
@@ -34,7 +32,7 @@
   @keyframes spin { to { transform: rotate(360deg); } }
 </style>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"ContactPage","url":"https://www.maamadurai.com.au/contact","mainEntity":{"@type":"Restaurant","@id":"https://www.maamadurai.com.au/#restaurant","name":"MaaMadurai","image":"https://www.maamadurai.com.au/public/a2-landscape.png","url":"https://www.maamadurai.com.au","priceRange":"$$","telephone":"+61424077120","email":"maamaduraistreetfood@gmail.com","address":{"@type":"PostalAddress","streetAddress":"Shop P34, Portico Plaza, 17-19 Aurelia Street","addressLocality":"Toongabbie","addressRegion":"NSW","postalCode":"2146","addressCountry":"AU"},"geo":{"@type":"GeoCoordinates","latitude":-33.7876,"longitude":150.9527},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday"],"opens":"17:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Thursday","Friday"],"opens":"11:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday"],"opens":"10:00","closes":"21:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Sunday"],"opens":"09:00","closes":"20:00"}]}}
+{"@context":"https://schema.org","@type":"ContactPage","@id":"https://www.maamadurai.com.au/contact#contactpage","url":"https://www.maamadurai.com.au/contact","inLanguage":"en-AU","mainEntity":{"@id":"https://www.maamadurai.com.au/#restaurant"}}
 </script>
 <meta name="google-site-verification" content="s2OStwrvXhLhc4d0cRlpSmPSMjrGOeTh9oThQZmCifs">
 <meta name="msvalidate.01" content="50621dce2194433a81b55ced25df3011">
@@ -47,6 +45,7 @@
 
 <div style="background: var(--background); min-height: 100vh">
   <dc-import name="SiteHeader" active="contact" hint-size="100%,120px"></dc-import>
+  <noscript><div style="max-width:1280px;margin:0 auto;padding:16px 16px 0"><nav aria-label="Site" style="display:flex;flex-wrap:wrap;gap:14px;font-size:15px"><a href="/">Home</a><a href="/menu">Menu</a><a href="/order">Order</a><a href="/catering">Catering</a><a href="/about">Our Story</a><a href="/reviews">Reviews</a><a href="/journal">Journal</a><a href="/contact">Contact</a></nav><p style="color:var(--foreground-muted);font-size:14px;line-height:1.7;margin:12px 0 0">MaaMadurai — Shop P34, Portico Plaza, 17–19 Aurelia Street, Toongabbie NSW 2146. Phone <a href="tel:+61424077120">0424 077 120</a>. Open Tue–Wed 5pm–9pm, Thu–Fri 11am–9pm, Sat 10am–9pm, Sun 9am–8pm.</p></div></noscript>
 
   <section style="position: relative; overflow: hidden">
     <img src="public/chicken-gravy.jpeg" alt="Chicken gravy served at MaaMadurai, Toongabbie" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover">
@@ -113,7 +112,7 @@
             </sc-if>
             <sc-if value="{{ isError }}" hint-placeholder-val="{{ false }}">
               <div role="alert" style="background: rgba(232,106,36,0.14); border: 1px solid #e86a24; border-radius: 12px; padding: 20px">
-                <p style="color: var(--foreground); line-height: 1.7; margin: 0">Your message did not send — {{ errorText }} Please try again, or call us on <a href="tel:+61424077120" style="color: var(--accent-primary)">0424 077 120</a> or email <a href="mailto:maamaduraistreetfood@gmail.com" style="color: var(--accent-primary)">maamaduraistreetfood@gmail.com</a>.</p>
+                <p style="color: var(--foreground); line-height: 1.7; margin: 0">Your message did not send. Please try again in a moment, or call us on <a href="tel:+61424077120" style="color: var(--accent-primary)">0424 077 120</a> or email <a href="mailto:maamaduraistreetfood@gmail.com" style="color: var(--accent-primary)">maamaduraistreetfood@gmail.com</a>.</p>
               </div>
             </sc-if>
           </div>
@@ -132,7 +131,10 @@
                 <x-import component-from-global-scope="MaaMaduraiDesignSystem_c0cb48.Textarea" name="message" rows="5" required="{{ true }}" placeholder="Catering for 40 guests on the 12th, biryani and starters…" hint-size="100%,140px"></x-import>
               </label>
               <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0">
-              <button type="submit" disabled="{{ busy }}" style="padding: 16px 32px; border: none; border-radius: 12px; background: var(--accent-primary); color: var(--background); font-family: var(--font-body); font-weight: 600; font-size: 16px; cursor: pointer; min-height: 52px" style-hover="background: var(--accent-hover)">{{ buttonLabel }}</button>
+              <button type="submit" disabled="{{ busy }}" style="padding: 16px 32px; border: none; border-radius: 12px; background: var(--accent-primary); color: var(--background); font-family: var(--font-body); font-weight: 600; font-size: 16px; cursor: pointer; min-height: 52px" style-hover="background: var(--accent-hover)">Send Message</button>
+              <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+                <p role="status" style="font-size: 14px; color: var(--accent-primary); margin: 0">Sending your message…</p>
+              </sc-if>
               <p style="font-size: 13px; color: rgba(245,240,232,0.6); line-height: 1.6; margin: 0">For same-day orders and catering, calling 0424 077 120 is always fastest. Your details are emailed to us through Formspree and used only to answer your enquiry — see our <a href="/privacy" style="color: var(--accent-primary)">privacy notice</a>.</p>
             </form>
           </sc-if>
@@ -193,6 +195,7 @@ class Component extends DCLogic {
       form.reset();
       this.setState({ status: 'ok' });
       if (window.mmTrack) window.mmTrack(kind === 'catering' ? 'catering_form_success' : 'contact_form_success', { page: location.pathname, enquiry_type: kind });
+      try { sessionStorage.setItem('mm_lead_pending', kind); } catch (err) {}
       const live = /(^|\.)maamadurai\.com\.au$/.test(location.hostname);
       location.assign((live ? '/thank-you' : 'ThankYou.dc.html') + '?type=' + kind);
     } catch (err) {
@@ -206,8 +209,6 @@ class Component extends DCLogic {
       isError: st === 'error',
       busy: st === 'sending',
       showForm: st !== 'ok',
-      errorText: this.state.errorText,
-      buttonLabel: st === 'sending' ? 'Sending…' : 'Send Message',
       onSubmit: (e) => this.send(e, 'contact'),
       facebookIcon: this.icon('facebook'),
       instagramIcon: this.icon('instagram'),
