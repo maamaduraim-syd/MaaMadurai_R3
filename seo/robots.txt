@@ -1,5 +1,10 @@
 User-agent: *
 Allow: /
-Disallow: /*.dc.html$
+
+# Implementation files (*.dc.html) are intentionally crawlable but not indexable.
+# They carry X-Robots-Tag: noindex (see vercel.json). They are NOT disallowed here:
+# SiteHeader.dc.html and SiteFooter.dc.html are fetched at runtime to assemble every
+# page, so blocking them here made Googlebot render the site with no header or footer.
+# A robots.txt block would also prevent crawlers from ever reading the noindex header.
 
 Sitemap: https://www.maamadurai.com.au/sitemap.xml

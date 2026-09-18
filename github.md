@@ -9,6 +9,7 @@ date: 2026-09-18T00:00:00Z
 - Self-serving aggregateRating removed from Reviews schema; Restaurant defined once on the homepage and referenced by @id everywhere else.
 - Thank-you page (/thank-you) added for Google Ads conversion tracking; forms redirect there on genuine success only.
 - <noscript> nav + address/phone fallback on all 15 pages so header/footer fetch failures never hide navigation or NAP.
+- ROOT CAUSE of the Rich Results 499s found and fixed: robots.txt "Disallow: /*.dc.html$" was blocking Googlebot from fetching SiteHeader/SiteFooter, so Google rendered every page with no header or footer. The components are now crawlable and kept out of the index with X-Robots-Tag: noindex instead.
 
 ### Previously
 - Second-pass production audit: menu, FAQs, catering packages and homepage dish cards are now static HTML instead of client-rendered arrays.

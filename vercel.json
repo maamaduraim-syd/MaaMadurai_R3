@@ -168,7 +168,7 @@
       ]
     },
     {
-      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|ThankYou|Article[A-Za-z]+)\\.dc\\.html",
+      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|ThankYou|SiteHeader|SiteFooter|Article[A-Za-z]+)\\.dc\\.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
