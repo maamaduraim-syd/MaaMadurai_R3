@@ -228,6 +228,16 @@ a:hover {
         <a href="/contact" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Contact &amp; Find Us</a>
       </nav>
     </div>
+
+    <div>
+      <h3 style="font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent-primary); margin: 0 0 16px">From the Journal</h3>
+      <nav aria-label="Journal" style="display: grid; gap: 8px; font-size: 14px">
+        <a href="/journal/what-is-kothu-parotta" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">What is kothu parotta?</a>
+        <a href="/journal/seeraga-samba-biryani" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">Seeraga Samba biryani explained</a>
+        <a href="/journal/what-is-jigarthanda" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">What is Jigarthanda?</a>
+        <a href="/journal/first-time-tamil-food-guide" style="color: var(--foreground-muted); text-decoration: none" style-hover="color: var(--accent-primary)">First time eating Tamil food?</a>
+      </nav>
+    </div>
   </div>
 
   <div style="max-width: 1280px; margin: 40px auto 0; padding-top: 24px; border-top: 1px solid var(--border-subtle)">
@@ -237,6 +247,7 @@ a:hover {
       <a href="/privacy" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Privacy &amp; tracking</a>
       <a href="/privacy#accessibility" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Accessibility</a>
       <a href="/contact" style="color: rgba(245,240,232,0.78); text-decoration: none" style-hover="color: var(--accent-primary)">Contact us</a>
+      <button type="button" onClick="{{ openConsent }}" style="padding: 0; border: 0; background: none; color: rgba(245,240,232,0.78); font-family: var(--font-body); font-size: 13px; text-decoration: underline; cursor: pointer; min-height: 44px" style-hover="color: var(--accent-primary)">Privacy preferences</button>
     </nav>
     <p style="color: rgba(245,240,232,0.55); font-size: 13px; margin: 0">© 2026 MaaMadurai, Shop P34 Portico Plaza, Toongabbie NSW 2146. All rights reserved.</p>
   </div>
@@ -250,6 +261,7 @@ class Component extends DCLogic {
   }
   renderVals() {
     return {
+      openConsent: () => { if (window.mmConsent) window.mmConsent.open(); },
       facebookIcon: this.icon('facebook'),
       instagramIcon: this.icon('instagram'),
       tripadvisorIcon: this.icon('tripadvisor'),

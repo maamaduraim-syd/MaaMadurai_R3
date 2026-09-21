@@ -3,11 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
 <title>Nandri — Enquiry Received | MaaMadurai, Toongabbie</title>
 <meta name="description" content="Your enquiry has reached MaaMadurai in Toongabbie. We will reply shortly — or call 0424 077 120 for anything urgent.">
 <link rel="icon" type="image/png" href="public/logo-192.png">
@@ -17,6 +12,12 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Nandri — Enquiry Received | MaaMadurai">
 <meta property="og:image" content="https://www.maamadurai.com.au/public/chicken-biryani.jpeg">
+<script src="./support.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
 <style data-mm-tokens>
 /* tokens/fonts.css */
 /* ===================================================================
@@ -259,9 +260,6 @@ a:hover {
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
-  /* Google Ads: paste the conversion label from the "Submit lead form" conversion
-     action here (the part after the slash in AW-18147375939/xxxxxxxx). */
-  static ADS_LABEL = '';
   componentDidMount() {
     // A conversion is only real if this page was reached by a genuine submit.
     // The form sets a one-shot token; we read and clear it, so refreshes,
@@ -279,9 +277,10 @@ class Component extends DCLogic {
           if (++tries > 20) return; // opted out or analytics blocked — give up
           return setTimeout(fire, 300);
         }
-        const params = { page: location.pathname, enquiry_type: kind, value: kind === 'catering' ? 150 : 25, currency: 'AUD' };
-        if (Component.ADS_LABEL) params.ads_label = Component.ADS_LABEL;
-        window.mmTrack('generate_lead', params);
+        // Canonical success event, fired exactly once per submission. No
+        // generate_lead alongside it — that would double-count the same lead.
+        window.mmTrack(kind === 'catering' ? 'catering_form_success' : 'contact_form_success',
+          { page: location.pathname, enquiry_type: kind });
       };
       fire();
     }
