@@ -31,7 +31,14 @@
     directions_click: ''
   };
 
-  var live = LIVE_HOST.test(location.hostname);
+  /* Search-engine and preview crawlers get no analytics at all. They never
+     consent, so they can only ever generate failed/blocked resource fetches
+     that eat crawl budget and clutter Rich Results Test. Analytics is not
+     page content, so withholding it is not cloaking. */
+  var BOT = /bot|crawl|spider|slurp|bingpreview|google-inspectiontool|chrome-lighthouse|headlesschrome|pagespeed|gtmetrix|facebookexternalhit|embedly|quora link preview|whatsapp|telegrambot|twitterbot|linkedinbot|discordbot|applebot|yandex|duckduckbot|baiduspider|semrush|ahrefs|mj12bot|dotbot|petalbot/i;
+  var isBot = BOT.test(navigator.userAgent || '') || navigator.webdriver === true;
+
+  var live = LIVE_HOST.test(location.hostname) && !isBot;
 
   window.dataLayer = window.dataLayer || [];
   function gtag() { window.dataLayer.push(arguments); }
@@ -77,6 +84,26 @@
 
   /* ---- 2. Google tags (advanced consent mode: load with denied defaults) ---- */
   var metaLoaded = false;
+  var adsConfigured = false;
+
+  /* The Google Ads config call is deliberately NOT made on page load.
+     Even with send_page_view:false and consent denied, the gtag.config
+     call still emits a cookieless conversion ping to
+     pagead2.googlesyndication.com carrying whatever conversion label the
+     Ads ACCOUNT has attached to page views. That is what Rich Results
+     Test was reporting as a blocked resource, and it is not something
+     code can strip from the request. Not configuring the tag until the
+     visitor grants advertising consent means crawlers — which never
+     consent — never trigger it at all. */
+  function configureAds() {
+    if (adsConfigured || !live) return;
+    adsConfigured = true;
+    /* allow_enhanced_conversions:false stops the tag scanning the page for
+       email/phone — our own public contact details were being hashed and
+       sent as if they were customer data. */
+    gtag('config', ADS_ID, { allow_enhanced_conversions: false, send_page_view: false });
+  }
+
   if (live) {
     var s = document.createElement('script');
     s.async = true;
@@ -85,10 +112,6 @@
 
     gtag('js', new Date());
     gtag('config', GA4_ID, { send_page_view: true, anonymize_ip: true });
-    /* Ads base tag only. allow_enhanced_conversions:false stops the tag
-       scanning the page for email/phone — our own public contact details
-       were being hashed and sent as if they were customer data. */
-    gtag('config', ADS_ID, { allow_enhanced_conversions: false, send_page_view: false });
   } else {
     console.info('[analytics] preview host — events logged, not sent');
   }
@@ -110,7 +133,7 @@
 
   function applyConsent(c) {
     gtag('consent', 'update', consentSignal(c));
-    if (c.ads) loadMeta();
+    if (c.ads) { configureAds(); loadMeta(); }
   }
 
   /* ---- 3. event model ---- */
@@ -156,6 +179,8 @@
 
     if (/^tel:/i.test(href)) {
       window.mmTrack('phone_click', { cta_location: where, page: location.pathname });
+    } else if (/square\.site/i.test(href)) {
+      window.mmTrack('order_outbound', { order_platform: 'square_online', cta_location: where, page: location.pathname });
     } else if (/ubereats\.com/i.test(href)) {
       window.mmTrack('order_outbound', { order_platform: 'uber_eats', cta_location: where, page: location.pathname });
     } else if (/doordash\.com/i.test(href)) {
@@ -329,6 +354,7 @@
   }
 
   function boot() {
+    if (isBot) return;      // no tags, no banner for crawlers
     var c = readConsent();
     if (c) applyConsent(c); // stored choice — no banner
     else open(false);       // no choice yet — ask, defaults stay denied

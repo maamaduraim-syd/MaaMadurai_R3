@@ -1,0 +1,9 @@
+/* ===================================================================
+   MaaMadurai Street Food — Web Fonts
+   Cinzel & Poppins are loaded from Google Fonts (matches production,
+   which also loads them via @import). Noto Sans Tamil is added here
+   as a substitute for the guideline's proprietary Tamil faces so
+   Tamil-script copy (used in "Our Story") renders correctly.
+=================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&family=Noto+Sans+Tamil:wght@400;500;600;700&display=swap');

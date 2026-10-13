@@ -1,0 +1,47 @@
+/* ===================================================================
+   MaaMadurai Street Food — Spacing, Radius & Elevation Tokens
+=================================================================== */
+
+:root {
+  /* ---- Spacing scale ---- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* Section rhythm: every content section on the site is a rounded
+     "panel" (background-elevated) with generous vertical padding and
+     a shared max-width, floating on the deep red page background. */
+  --section-padding-y: var(--space-16);   /* py-16 */
+  --section-padding-x: var(--space-8);    /* px-8 */
+  --section-max-width: 80rem;             /* max-w-7xl, 1280px */
+  --content-max-width: 64rem;             /* max-w-4xl for prose */
+
+  /* ---- Corner radii ---- */
+  --radius-sm: 0.5rem;   /* 8px — tags, small chips */
+  --radius-md: 0.75rem;  /* 12px — menu tab buttons */
+  --radius-lg: 1rem;     /* 16px — cards, form inputs, iframe wrapper */
+  --radius-xl: 1.25rem;  /* 20px — hero pill buttons (unused, legacy) */
+  --radius-full: 999px;  /* pills, avatar, social icon circles, badges */
+
+  /* ---- Borders ---- */
+  --border-width: 1px;
+  --border-width-thick: 2px; /* form input focus border, hover card border */
+
+  /* ---- Shadows ---- */
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.25);   /* review-widget wrapper */
+  --shadow-image: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Image "About Us" shadow-2xl */
+
+  /* ---- Motion ---- */
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --duration-fast: 0.3s; /* @kind other */
+  --duration-medium: 0.5s; /* @kind other */
+  --duration-slow: 0.8s; /* @kind other */
+  --duration-hero: 1.5s; /* @kind other */
+}
