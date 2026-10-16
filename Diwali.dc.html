@@ -25,7 +25,7 @@
 <body>
 <x-dc>
 <helmet>
-<style data-mm-tokens>
+<style data-mm-tokens="">
 /* tokens/fonts.css */
 /* ===================================================================
    MaaMadurai Street Food — Web Fonts
@@ -200,7 +200,7 @@ a:hover {
 </style>
 <script src="./analytics.js"></script>
 </helmet>
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#7d1d0d"/><text x="100" y="122" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#face0b" text-anchor="middle">MM</text></svg></template>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#7d1d0d"></rect><text x="100" y="122" font-family="Georgia,serif" font-size="62" font-weight="700" fill="#face0b" text-anchor="middle">MM</text></svg></template>
 
 <div style="min-height: 100vh; background-color: #7d1d0d; background-image: radial-gradient(rgba(250,206,11,0.12) 1.5px, transparent 2px); background-size: 28px 28px; color: #ffffff">
   <dc-import name="SiteHeader" hint-size="100%,120px"></dc-import>
@@ -213,14 +213,14 @@ a:hover {
       <p style="font-size: clamp(1.05rem, 3vw, 1.35rem); color: #f5f0e8; margin: 10px 0 24px">with a <strong style="color: #face0b">FREE</strong> Chicken 65 or Kola Urundai</p>
       <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(10px, 2.5vw, 16px)">
         <figure style="margin: 0; background: #a02a13; border: 1px solid rgba(250,206,11,0.3); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
-          <img src="public/diwali/chicken-biryani.jpg" alt="Madurai Chicken Biryani on banana leaf with raita and gravy" width="900" height="720" style="width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; display: block">
+          <img src="public/diwali/chicken-biryani.jpg" alt="Half bucket of Madurai Chicken Biryani with raita and gravy" width="800" height="800" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block">
           <figcaption style="padding: 12px 10px 16px; display: flex; flex-direction: column; gap: 6px; align-items: center; flex-grow: 1; justify-content: space-between">
             <span style="font-family: var(--font-display); font-weight: 700; font-size: clamp(0.9rem, 2.4vw, 1.05rem); line-height: 1.2">Madurai Chicken Biryani</span>
             <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$100</b>
           </figcaption>
         </figure>
         <figure style="margin: 0; background: #a02a13; border: 1px solid rgba(250,206,11,0.3); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
-          <img src="public/diwali/mutton-biryani.jpg" alt="Madurai Seeraga Samba Mutton Biryani on banana leaf with raita and gravy" width="900" height="720" style="width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; display: block">
+          <img src="public/diwali/mutton-biryani.jpg" alt="Half bucket of Madurai Seeraga Samba Mutton Biryani with raita and gravy" width="800" height="800" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block">
           <figcaption style="padding: 12px 10px 16px; display: flex; flex-direction: column; gap: 6px; align-items: center; flex-grow: 1; justify-content: space-between">
             <span style="font-family: var(--font-display); font-weight: 700; font-size: clamp(0.9rem, 2.4vw, 1.05rem); line-height: 1.2">Madurai Seeraga Samba Mutton Biryani</span>
             <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$110</b>
@@ -306,11 +306,16 @@ a:hover {
               <p role="alert" style="margin: 0; background: #fff1ee; color: #8a1405; border-radius: 10px; padding: 10px 12px; font-weight: 500">{{ error }}</p>
             </sc-if>
             <button type="submit" disabled="{{ submitting }}" style="min-height: 54px; border: 0; border-radius: 9999px; background: #face0b; color: #7d1d0d; font: inherit; font-weight: 700; font-size: 1.1rem; cursor: pointer" style-hover="background: #fbd84d">{{ ctaLabel }}</button>
-            <p style="margin: 0; font-size: 0.8rem; color: #f5f0e8; text-align: center">Secure payment by Square. Your booking is confirmed once payment is complete.</p>
+            <p style="margin: 0; font-size: 0.8rem; color: #f5f0e8; text-align: center">Secure payment by Square. Your booking is confirmed once payment is complete. By paying you agree to the cancellation policy below.</p>
           </div>
         </form>
       </sc-if>
       <p style="margin: 20px 0 0; font-size: 0.85rem; color: #f5f0e8; line-height: 1.5; text-wrap: pretty">Diwali prices and the free starter apply only to orders pre-booked and paid on this page. Pickup only from Shop P34, Portico Plaza, 17–19 Aurelia St, Toongabbie. Questions? Call <a href="tel:+61424077120" style="color: #face0b">0424 077 120</a>.</p>
+      <div id="cancellation" style="margin: 20px 0 0; padding: 18px 20px; border: 1px solid rgba(250,206,11,0.3); border-radius: 16px; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #f5f0e8; line-height: 1.55; text-wrap: pretty">
+        <h2 style="margin: 0; font-family: Cinzel, serif; font-size: 1.05rem; color: #face0b">Cancellation &amp; refunds</h2>
+        <p style="margin: 0"><strong style="color: #ffffff">All Diwali pre-orders are final: no cancellations or change-of-mind refunds.</strong> We buy fresh meat and cook each order to your booking. Missed pickups can’t be refunded. If something comes up, call 0424 077 120 and we’ll try to move your order to another open pickup day.</p>
+        <p style="margin: 0">If we can’t supply your order (for example sold out or the shop closes), or there is a problem with your food, you’ll get a full refund. This doesn’t affect your rights under the Australian Consumer Law.</p>
+      </div>
     </section>
   </main>
   <dc-import name="SiteFooter" hint-size="100%,420px"></dc-import>
