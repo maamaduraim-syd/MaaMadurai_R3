@@ -90,9 +90,14 @@ module.exports = async function handler(req, res) {
   const locationId = process.env.SQUARE_LOCATION_ID;
   if (!token || !locationId) return bad(res, "Online payment is not set up yet. Please call 0424 077 120.", 503);
 
-  const bookingId = "DW-" + randomUUID().replace(/-/g, "").slice(0, 6).toUpperCase();
+  // Test mode: /diwali?test=<DIWALI_TEST_CODE> charges $1 per bucket. Remove the env var to switch off.
+  const testCode = process.env.DIWALI_TEST_CODE;
+  const isTest = !!testCode && body.testCode === testCode;
+  const priceOf = (b) => (isTest ? 1 : BIRYANIS[b.biryani].price);
+
+  const bookingId = (isTest ? "TEST-" : "DW-") + randomUUID().replace(/-/g, "").slice(0, 6).toUpperCase();
   const pickup = day.label + " at " + formatSlot(body.slot);
-  const total = buckets.reduce((s, b) => s + BIRYANIS[b.biryani].price, 0);
+  const total = buckets.reduce((s, b) => s + priceOf(b), 0);
   const itemsText = buckets.map((b) => BIRYANIS[b.biryani].name + " + FREE " + STARTERS[b.starter]);
   const origin = (
     process.env.SITE_URL ||
@@ -117,10 +122,10 @@ module.exports = async function handler(req, res) {
           location_id: locationId,
           reference_id: bookingId,
           line_items: buckets.map((b) => ({
-            name: "Diwali Half Bucket – " + BIRYANIS[b.biryani].name,
+            name: (isTest ? "TEST – " : "") + "Diwali Half Bucket – " + BIRYANIS[b.biryani].name,
             quantity: "1",
             note: "FREE " + STARTERS[b.starter],
-            base_price_money: { amount: BIRYANIS[b.biryani].price * 100, currency: "AUD" },
+            base_price_money: { amount: priceOf(b) * 100, currency: "AUD" },
           })),
         },
         checkout_options: {

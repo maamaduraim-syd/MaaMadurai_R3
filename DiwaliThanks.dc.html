@@ -220,7 +220,7 @@ a:hover {
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{}">
 class Component extends DCLogic {
-  ref() { const r = new URLSearchParams(location.search).get('ref') || ''; return /^DW-[A-Z0-9]{6}$/.test(r) ? r : ''; }
+  ref() { const r = new URLSearchParams(location.search).get('ref') || ''; return /^(DW|TEST)-[A-Z0-9]{6}$/.test(r) ? r : ''; }
   componentDidMount() {
     const ref = this.ref();
     if (!ref) return;

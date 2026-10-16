@@ -370,7 +370,7 @@ class Component extends DCLogic {
     const total = s.buckets.reduce((t, b) => t + DW_BIRYANIS[b.biryani].price, 0);
     fetch('/api/diwali', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ buckets: s.buckets, date: s.date, slot: s.slot, name: s.name, phone: s.phone, email: s.email, notes: s.notes })
+      body: JSON.stringify({ buckets: s.buckets, date: s.date, slot: s.slot, name: s.name, phone: s.phone, email: s.email, notes: s.notes, testCode: new URLSearchParams(location.search).get('test') || '' })
     })
       .then((r) => r.json().catch(() => ({})).then((d) => ({ ok: r.ok, d: d })))
       .then((x) => {
