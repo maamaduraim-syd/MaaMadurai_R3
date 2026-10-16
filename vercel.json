@@ -51,6 +51,16 @@
       "source": "/ThankYou.dc.html",
       "destination": "/thank-you",
       "permanent": true
+    },
+    {
+      "source": "/Diwali.dc.html",
+      "destination": "/diwali",
+      "permanent": true
+    },
+    {
+      "source": "/DiwaliThanks.dc.html",
+      "destination": "/diwali/thanks",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -131,6 +141,38 @@
       "destination": "/ArticleFirstTimeGuide.dc.html"
     },
     {
+      "source": "/diwali",
+      "destination": "/Diwali.dc.html"
+    },
+    {
+      "source": "/diwali/thanks",
+      "destination": "/DiwaliThanks.dc.html"
+    },
+    {
+      "source": "/diwali/_ds/:path*",
+      "destination": "/_ds/:path*"
+    },
+    {
+      "source": "/diwali/public/:path*",
+      "destination": "/public/:path*"
+    },
+    {
+      "source": "/diwali/support.js",
+      "destination": "/support.js"
+    },
+    {
+      "source": "/diwali/analytics.js",
+      "destination": "/analytics.js"
+    },
+    {
+      "source": "/diwali/SiteHeader.dc.html",
+      "destination": "/SiteHeader.dc.html"
+    },
+    {
+      "source": "/diwali/SiteFooter.dc.html",
+      "destination": "/SiteFooter.dc.html"
+    },
+    {
       "source": "/sitemap.xml",
       "destination": "/seo/sitemap.xml"
     },
@@ -189,7 +231,7 @@
       ]
     },
     {
-      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|ThankYou|SiteHeader|SiteFooter|Article[A-Za-z]+)\\.dc\\.html",
+      "source": "/(Home|Menu|Order|Catering|About|Reviews|Blog|Contact|Privacy|ThankYou|Diwali|DiwaliThanks|SiteHeader|SiteFooter|Article[A-Za-z]+)\\.dc\\.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
