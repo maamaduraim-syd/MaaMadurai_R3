@@ -106,9 +106,19 @@ module.exports = async function handler(req, res) {
   ).replace(/\/$/, "");
 
   // --- Create Square payment link ---
-  let squareRes, squareData;
-  try {
-    squareRes = await fetch(SQUARE_BASE + "/v2/online-checkout/payment-links", {
+  // A PICKUP fulfillment makes the paid order appear in Square POS > Orders (and auto-print).
+  const fulfillment = {
+    type: "PICKUP",
+    state: "PROPOSED",
+    pickup_details: {
+      recipient: { display_name: name, phone_number: phoneE164, email_address: email },
+      schedule_type: "SCHEDULED",
+      pickup_at: day.date + "T" + body.slot + ":00+11:00",
+      note: (bookingId + " · " + itemsText.join(" | ") + (notes ? " · Note: " + notes : "")).slice(0, 500),
+    },
+  };
+  const createLink = (withFulfillment) =>
+    fetch(SQUARE_BASE + "/v2/online-checkout/payment-links", {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
@@ -127,6 +137,7 @@ module.exports = async function handler(req, res) {
             note: "FREE " + STARTERS[b.starter],
             base_price_money: { amount: priceOf(b) * 100, currency: "AUD" },
           })),
+          ...(withFulfillment ? { fulfillments: [fulfillment] } : {}),
         },
         checkout_options: {
           redirect_url: origin + "/diwali/thanks?ref=" + bookingId,
@@ -136,7 +147,15 @@ module.exports = async function handler(req, res) {
         payment_note: bookingId + " · " + name + " · Pickup " + pickup,
       }),
     });
+  let squareRes, squareData;
+  try {
+    squareRes = await createLink(true);
     squareData = await squareRes.json().catch(() => ({}));
+    if (!squareRes.ok) {
+      console.error("Square rejected pickup fulfillment, retrying without", JSON.stringify(squareData.errors || squareData));
+      squareRes = await createLink(false);
+      squareData = await squareRes.json().catch(() => ({}));
+    }
   } catch (err) {
     console.error("Square request failed", err);
     return bad(res, "We couldn't start payment just now. Please try again or call 0424 077 120.", 502);
