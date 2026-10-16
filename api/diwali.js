@@ -134,7 +134,8 @@ module.exports = async function handler(req, res) {
           line_items: buckets.map((b) => ({
             name: (isTest ? "TEST – " : "") + "Diwali Half Bucket – " + BIRYANIS[b.biryani].name,
             quantity: "1",
-            note: "FREE " + STARTERS[b.starter],
+            // Item notes always print on Square order tickets — carry the pickup slot + ref here.
+            note: "FREE " + STARTERS[b.starter] + " · PICKUP " + pickup + " · " + bookingId + " · " + name,
             base_price_money: { amount: priceOf(b) * 100, currency: "AUD" },
           })),
           ...(withFulfillment ? { fulfillments: [fulfillment] } : {}),
