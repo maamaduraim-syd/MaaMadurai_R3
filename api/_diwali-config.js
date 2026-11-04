@@ -39,8 +39,13 @@ function dayLabel(date) {
     .replace(",", "");
 }
 
+// One-off overrides by date (last slot included).
+const DATE_HOURS = {
+  "2026-11-08": ["09:00", "16:00"], // Sun 8 Nov: last pickup 4pm
+};
+
 function slotsFor(date) {
-  const [open, close] = HOURS[utcDate(date).getUTCDay()];
+  const [open, close] = DATE_HOURS[date] || HOURS[utcDate(date).getUTCDay()];
   const toMin = (t) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
   const out = [];
   for (let m = toMin(open); m <= toMin(close); m += 30) {
