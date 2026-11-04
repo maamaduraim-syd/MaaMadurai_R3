@@ -216,18 +216,18 @@ a:hover {
           <img src="public/diwali/chicken-biryani.jpg" alt="Half bucket of Madurai Chicken Biryani with raita and gravy" width="800" height="800" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block">
           <figcaption style="padding: 12px 10px 16px; display: flex; flex-direction: column; gap: 6px; align-items: center; flex-grow: 1; justify-content: space-between">
             <span style="font-family: var(--font-display); font-weight: 700; font-size: clamp(0.9rem, 2.4vw, 1.05rem); line-height: 1.2">Madurai Chicken Biryani</span>
-            <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$100</b>
+            <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$100</b><span style="font-size: 0.9rem; font-weight: 600; color: #f5f0e8">Half bucket · serves 5–6</span>
           </figcaption>
         </figure>
         <figure style="margin: 0; background: #a02a13; border: 1px solid rgba(250,206,11,0.3); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column">
           <img src="public/diwali/mutton-biryani.jpg" alt="Half bucket of Madurai Seeraga Samba Mutton Biryani with raita and gravy" width="800" height="800" style="width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; display: block">
           <figcaption style="padding: 12px 10px 16px; display: flex; flex-direction: column; gap: 6px; align-items: center; flex-grow: 1; justify-content: space-between">
             <span style="font-family: var(--font-display); font-weight: 700; font-size: clamp(0.9rem, 2.4vw, 1.05rem); line-height: 1.2">Madurai Seeraga Samba Mutton Biryani</span>
-            <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$110</b>
+            <b style="font-family: var(--font-display); font-weight: 900; font-size: clamp(1.7rem, 5vw, 2.2rem); color: #face0b; line-height: 1">$110</b><span style="font-size: 0.9rem; font-weight: 600; color: #f5f0e8">Half bucket · serves 5–6</span>
           </figcaption>
         </figure>
       </div>
-      <p style="margin: 20px 0 0; color: #f5f0e8; line-height: 1.6">Fri · Sat · Sun  |  30 Oct – 1 Nov · 6 – 8 Nov · 13 – 15 Nov<br>Book by Thursday 6pm for that weekend · while stocks last</p>
+      <p style="margin: 20px 0 0; color: #f5f0e8; line-height: 1.6">Fri · Sat · Sun  |  30 Oct – 1 Nov · 6 – 8 Nov · 13 – 15 Nov<br>Each half bucket serves 5–6 people<br>Book by Thursday 6pm for that weekend · while stocks last</p>
     </section>
 
     <section id="book" data-screen-label="Diwali booking" style="width: 100%; max-width: 880px; box-sizing: border-box; background: #8f2410; border: 1px solid rgba(250,206,11,0.3); border-radius: 20px; padding: clamp(24px, 5vw, 40px) clamp(14px, 4vw, 32px); text-align: center">
@@ -332,6 +332,7 @@ const DW_WEEKENDS = [
   { cutoff: '2026-11-12T18:00:00+11:00', days: ['2026-11-13', '2026-11-14', '2026-11-15'] }
 ];
 const DW_HOURS = { 5: ['11:00', '20:30'], 6: ['10:00', '20:30'], 0: ['09:00', '19:30'] };
+const DW_DATE_HOURS = { '2026-11-08': ['09:00', '16:00'] };
 function dwUtc(date) { const p = date.split('-').map(Number); return new Date(Date.UTC(p[0], p[1] - 1, p[2])); }
 function dwSlot(s) { const h = Number(s.slice(0, 2)); return (h % 12 === 0 ? 12 : h % 12) + ':' + s.slice(3) + (h >= 12 ? 'pm' : 'am'); }
 function dwLocalDays() {
@@ -339,7 +340,7 @@ function dwLocalDays() {
   DW_WEEKENDS.forEach(function (w) {
     if (now >= Date.parse(w.cutoff)) return;
     w.days.forEach(function (date) {
-      const d = dwUtc(date), hrs = DW_HOURS[d.getUTCDay()], toMin = function (t) { return Number(t.slice(0, 2)) * 60 + Number(t.slice(3)); };
+      const d = dwUtc(date), hrs = DW_DATE_HOURS[date] || DW_HOURS[d.getUTCDay()], toMin = function (t) { return Number(t.slice(0, 2)) * 60 + Number(t.slice(3)); };
       const slots = [];
       for (let m = toMin(hrs[0]); m <= toMin(hrs[1]); m += 30) {
         const v = String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
@@ -405,7 +406,7 @@ class Component extends DCLogic {
       slot: s.slot, onSlot: this.field('slot'),
       name: s.name, onName: this.field('name'), phone: s.phone, onPhone: this.field('phone'),
       email: s.email, onEmail: this.field('email'), notes: s.notes, onNotes: this.field('notes'),
-      summaryText: n + ' half bucket' + (n > 1 ? 's' : '') + ' + ' + n + ' free starter' + (n > 1 ? 's' : ''),
+      summaryText: n + ' half bucket' + (n > 1 ? 's' : '') + ' + ' + n + ' free starter' + (n > 1 ? 's' : '') + ' · serves ' + (n * 5) + '–' + (n * 6),
       totalText: '$' + total,
       hasError: !!s.error, error: s.error, submitting: s.submitting,
       ctaLabel: s.submitting ? 'Taking you to payment…' : 'Pay $' + total + ' & confirm',
