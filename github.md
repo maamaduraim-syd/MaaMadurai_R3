@@ -1,4 +1,4 @@
-repo: maamaduraim-syd/maamadurai
+repo: maamaduraim-syd/MaaMadurai_R3
 branch: main
 
 ## Last sync
